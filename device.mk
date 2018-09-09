@@ -76,6 +76,24 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
+# Camera
+PRODUCT_PACKAGES += \
+    libexynoscamera_shim \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service
+
+# Configstore
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.0-impl \
+    android.hardware.configstore@1.0-service
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
@@ -86,17 +104,19 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    tinymix
+    tinymix \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl
 
+# Bluetooth
 PRODUCT_PACKAGES += \
-    libstlport \
-    libprotobuf-cpp-full
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
+    libbt-vendor
 
-# shims
+# GPS
 PRODUCT_PACKAGES += \
-    libshim_media
-#    libgps_shim
-
+    gpsd_shim
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
@@ -129,22 +149,29 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/melfas-ts.idc:system/usr/idc/melfas-ts.idc
 
 # Keyhandler
-PRODUCT_PACKAGES += \
-    CMActions \
-    com.cyanogenmod.keyhandler
+# PRODUCT_PACKAGES += \
+#     CMActions \
+#     com.lineageos.keyhandler
 
-PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
+#PRODUCT_SYSTEM_SERVER_JARS += com.lineageos.keyhandler
 
 # never dexopt the keyhandler
-$(call add-product-dex-preopt-module-config,com.cyanogenmod.keyhandler,disable)
+#$(call add-product-dex-preopt-module-config,com.lineageos.keyhandler,disable)
 
 # Libstlport
 PRODUCT_PACKAGES += \
-    libstlport
+    libstlport \
+    libprotobuf-cpp-full
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.m86
+    lights.m86 \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service
+
+# Memory
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -177,12 +204,17 @@ PRODUCT_PACKAGES += \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
     Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    android.hardware.nfc@1.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+
+# Network
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0
 
 # OMX
 #PRODUCT_PACKAGES += \
@@ -206,18 +238,82 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.m86
+    power.m86 \
+    android.hardware.power@1.0-service \
+    android.hardware.power@1.0-impl
+
+# RenderScript
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
+# seccomp
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
+
+# Sensorhub
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-impl \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd \
+    libbauthserver_shim \
     libglib \
     libfprint \
-    fingerprint.m86
+    fingerprint.m86 \
+    android.hardware.biometrics.fingerprint@2.1-impl \
+    android.hardware.biometrics.fingerprint@2.1-service
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl.exynos7420 \
+    android.hardware.gnss@1.0-service
 
 # immvibe
 PRODUCT_PACKAGES += \
     openimmvibed
+
+# OpenMAX-shims
+PRODUCT_PACKAGES += \
+    libui_shim \
+    libExynosOMX_shim
+
+# Stagefright-shims
+PRODUCT_PACKAGES += \
+	libstagefright_shim
+
+# Graphics
+PRODUCT_PACKAGES += \
+    gralloc.m86 \
+    libhwc2on1adapter \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl
+
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    keystore.m86 \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -234,13 +330,21 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     hostapd \
     libnetcmdiface \
+    libwpa_client \
     macloader \
+    wificond \
+    wifiloader \
+    wifilogd \
+    wlutil \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    android.hardware.wifi@1.0-impl \
+    android.hardware.wifi@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/filter_ie:system/etc/wifi/filter_ie
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -268,6 +372,10 @@ PRODUCT_COPY_FILES += \
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)/releasetools
+
+# call Samsung LSI board support package
+$(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
+$(call inherit-product, hardware/samsung_slsi-cm/exynos7420/exynos7420.mk)
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk

@@ -17,7 +17,7 @@
 $(call inherit-product, device/meizu/m86/full_m86.mk)
 
 # Inherit common CM phone.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_NAME := lineage_m86
 PRODUCT_DEVICE := m86

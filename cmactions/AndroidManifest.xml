@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cyanogenmod.settings.device"
+    package="com.lineageos.settings.device"
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system"
@@ -18,7 +18,7 @@
         android:icon="@mipmap/ic_launcher_settings"
         android:theme="@android:style/Theme.Material.Settings" >
 
-        <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
+        <receiver android:name="com.lineageos.settings.device.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -50,7 +50,7 @@
             android:name=".TouchscreenGestureSettings"
             android:label="@string/screen_gestures_panel_title">
             <intent-filter>
-                <action android:name="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS" />
+                <action android:name="com.lineageos.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS" />
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.title"

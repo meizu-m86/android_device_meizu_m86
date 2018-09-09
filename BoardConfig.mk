@@ -36,8 +36,8 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := true
 #KERNEL_TOOLCHAIN := /home/absolu7e/gcc-linaro-5.2-2015.11-x86_64_aarch64-linux-gnu/bin
@@ -85,15 +85,19 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_IMAGE_NAME := Image
 #BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE) --ramdisk_offset 0x01f88000 --tags_offset 0xfff88100 --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE) --ramdisk_offset 0x01f88000 --pagesize $(BOARD_KERNEL_PAGESIZE)
 TARGET_KERNEL_CONFIG := cm_pro5_defconfig
 TARGET_KERNEL_SOURCE := kernel/meizu/m576
-TARGET_USES_UNCOMPRESSED_KERNEL := true
+#TARGET_USES_UNCOMPRESSED_KERNEL := true
 #BOARD_KERNEL_SEPARATED_DT := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
+# Manifest
+DEVICE_MANIFEST_FILE += device/meizu/m86/manifest.xml
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := default
@@ -117,7 +121,7 @@ TARGET_SOC := exynos7420
 BOARD_HAVE_OPENSOURCE_IMMVIBE := true
 
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += $(M86_PATH)/cmhw
+BOARD_HARDWARE_CLASS += $(M86_PATH)/lineagehw
 #BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
 # Radio
@@ -154,6 +158,49 @@ TW_SCREEN_BLANK_ON_BOOT := true
 # Renderscript
 BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53
 BOARD_OVERRIDE_RS_CPU_VARIANT_64 := cortex-a57
+
+# Camera-shims
+TARGET_LD_SHIM_LIBS += \
+	/system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so \
+	/system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so
+
+# Fingerprint-shims
+TARGET_LD_SHIM_LIBS += \
+       /system/lib64/libbauthserver.so|/system/lib64/libbauthserver_shim.so
+
+# GPS-shims
+TARGET_LD_SHIM_LIBS += \
+	/system/bin/gpsd|/vendor/lib64/gpsd_shim.so
+
+# Samsung LSI OpenMAX
+#COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED
+
+# OpenMAX video
+BOARD_USE_DMA_BUF := true
+BOARD_USE_METADATABUFFERTYPE := true
+
+# OpenMAX-shims
+TARGET_LD_SHIM_LIBS += \
+	/system/lib/omx/libOMX.Exynos.AVC.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.AVC.Decoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.AVC.Encoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.HEVC.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.HEVC.Decoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.HEVC.Encoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.HEVC.Encoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.MPEG4.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.MPEG4.Decoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.MPEG4.Encoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.MPEG4.Encoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.VP8.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.VP8.Decoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.VP8.Encoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.VP8.Encoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.VP9.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.VP9.Decoder.so|/vendor/lib64/libui_shim.so \
+	/system/lib/omx/libOMX.Exynos.WMV.Decoder.so|/vendor/lib/libui_shim.so \
+	/system/lib64/omx/libOMX.Exynos.WMV.Decoder.so|/vendor/lib64/libui_shim.so
 
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
@@ -194,6 +241,7 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
+WPA_SUPPLICANT_USE_HIDL          := true
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
@@ -218,6 +266,9 @@ BOARD_SEPOLICY_DIRS := \
 BOARD_SECCOMP_POLICY := \
         $(M86_PATH)/seccomp
 
+# Security
+BOARD_USES_TRUST_KEYMASTER := true
+
 # Multirom
 TARGET_RECOVERY_IS_MULTIROM := true
 MR_NO_KEXEC := enabled
@@ -238,6 +289,9 @@ MR_DEVICE_SPECIFIC_VERSION := e
 MR_DEVICE_VARIANTS := m86
 MR_PIXEL_FORMAT := "RGBA_8888"
 MR_DTB_DEV := "/dev/block/sda25"
+
+TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := zh_CN
 
 # inherit from the proprietary version
 -include vendor/meizu/m86/BoardConfigVendor.mk

@@ -16,3 +16,8 @@ allow init sysfs:lnk_file setattr;
 # read/chown mDNIE symlinks
 allow init sysfs_mdnie_writable:lnk_file { read setattr };
 
+# superuser
+allow init su:process { transition rlimitinh siginh noatsecure };
+
+# RIL
+allow init socket_device:sock_file { create open read write getattr setattr };

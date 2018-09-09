@@ -26,7 +26,7 @@
 /dev/ehci_power              u:object_r:mif_device:s0
 /dev/mipi-lli/lli_control    u:object_r:mif_device:s0
 
-/dev/ttySAC[0-9]*            u:object_r:gps_device:s0
+/dev/ttySAC[0-9]*            u:object_r:uart_device:s0
 
 /dev/block/mmcblk0p[0-9]*    u:object_r:emmcblk_device:s0
 /dev/block/sda[0-9]*         u:object_r:emmcblk_device:s0
@@ -62,26 +62,7 @@
 
 /data/misc/radio(/.*)?       u:object_r:radio_data_file:s0
 
-# gps
-/data/system/gps/\.flp\.interface\.pipe\.to_gpsd     u:object_r:gps_data_file:s0
-/data/system/gps/\.gps\.interface\.pipe\.to_gpsd     u:object_r:gps_data_file:s0
-/data/system/gps/\.gps\.interface\.pipe\.to_jni      u:object_r:gps_data_file:s0
-/data/system/gps/\.gpsd\.lock                        u:object_r:gps_data_file:s0
-/data/system/gps/gldata\.sto                         u:object_r:gps_data_file:s0
-/data/system/gps/alt\.dat                            u:object_r:gps_data_file:s0
-/data/system/gps/lto2\.dat                           u:object_r:gps_data_file:s0
-/data/system/gps/ltoStatus\.txt                      u:object_r:gps_data_file:s0
-
-/data/gps/ctrlpipe                                   u:object_r:gps_data_file:s0
-/data/gps/.gpslogd.pipe                              u:object_r:gps_data_file:s0
-/data/gps/nmeapipe                                   u:object_r:gps_data_file:s0
-
 ####################################
-# sysfs files
-/sys/class/power_supply/battery/music -- u:object_r:sysfs_writable:s0
-/sys/class/devfreq/exynos5-busfreq-mif(/.*)? -- u:object_r:sysfs_writable:s0
-/sys/class/lcd(/.*)?         -- u:object_r:sysfs_writable:s0
-
 # bluetooth
 /sys/devices/bluetooth.[0-9]*/rfkill/rfkill0/state  u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/bluetooth.[0-9]*/rfkill/rfkill0/type   u:object_r:sysfs_bluetooth_writable:s0
@@ -110,7 +91,6 @@
 /system/bin/record_panic_ms  -- u:object_r:record_panic_ms_exec:s0
 
 /sbin/cbd                    -- u:object_r:cpboot-daemon_exec:s0
-/system/bin/gpsd             -- u:object_r:gpsd_exec:s0
 
 /system/bin/rild_exynos      -- u:object_r:rild_exec:s0
 
