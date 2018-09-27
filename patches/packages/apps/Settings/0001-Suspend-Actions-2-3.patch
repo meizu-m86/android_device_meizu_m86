@@ -19,7 +19,7 @@ index f522693..66f702f 100644
 +++ b/res/values-ru/rr_strings.xml
 @@ -1858,6 +1858,26 @@
    <string name="yes">Да</string>
-   <string name="status_bar_battery_style_tile_title">Пользовательский стиль плитки батареи</string>
+   <string name="battery_tile_style_title">Стиль плитки батареи</string>
    <string name="status_bar_battery_style_tile_summary">Разрешить устанавливать тот же стиль значка батареи, что и в строке состояния</string>
 +  <!-- Screen state service -->
 +  <string name="screen_state_toggles_summary">@null</string>
@@ -81,8 +81,8 @@ index cea07e0..60b52dc 100644
 --- a/res/xml/rr_misc.xml
 +++ b/res/xml/rr_misc.xml
 @@ -104,6 +104,13 @@
-             android:icon="@drawable/rr_alarmblocker_icon"
              android:fragment="com.android.settings.rr.AlarmBlocker" />
+ 
  
 +        <!-- Screen state -->
 +        <PreferenceScreen
@@ -91,9 +91,9 @@ index cea07e0..60b52dc 100644
 +            android:fragment="com.android.settings.rr.fragments.ScreenStateToggles"
 +            android:icon="@drawable/rr_power_icon" />
 +
-        <!-- System APP Remover -->
-        <PreferenceScreen
-             android:id="@+id/system_app_remover"
+         <PreferenceScreen
+             android:key="screenstate_category"
+             android:title="@string/screen_state_toggles_title"
 diff --git a/res/xml/rr_screen_state_toggles.xml b/res/xml/rr_screen_state_toggles.xml
 new file mode 100644
 index 0000000..4c65de1

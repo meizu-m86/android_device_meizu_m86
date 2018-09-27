@@ -12,8 +12,8 @@ index 1d1813d..4215009 100644
 --- a/res/xml/sound_settings.xml
 +++ b/res/xml/sound_settings.xml
 @@ -103,6 +103,9 @@
-                 android:title="@string/headset_connect_player_title"
-                 android:summary="@string/headset_connect_player_summary" />
+                 android:persistent="false"
+                 android:ringtoneType="alarm" />
  
 +        <org.cyanogenmod.internal.cmparts.CMPartsPreference
 +                android:key="hifi" />

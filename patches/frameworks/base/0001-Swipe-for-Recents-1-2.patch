@@ -139,9 +139,9 @@ index 6040a36..f04ebc6 100644
 +            resolver.registerContentObserver(Settings.System.getUriFor(
 +                    Settings.System.RECENTS_FINGER_GESTURE), true, this,
 +                    UserHandle.USER_ALL);
-             updateSettings();
-         }
- 
+             resolver.registerContentObserver(Settings.System.getUriFor(
+                     Settings.System.NAVIGATION_BAR_RECENTS), false, this,
+                     UserHandle.USER_ALL);
 @@ -2055,6 +2059,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                      public void onSwipeThreeFinger() {
                          mHandler.post(mScreenshotRunnable);

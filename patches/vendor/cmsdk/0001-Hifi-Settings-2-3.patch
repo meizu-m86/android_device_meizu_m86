@@ -81,8 +81,8 @@ index 2868b3a..b25c301 100644
 +                new InclusiveIntegerRangeValidator(0, 5);
 +
          /**
-          * Whether the battery light should be enabled (if hardware supports it)
-          * The value is boolean (1 or 0).
+          * Activate torchlight when power button is
+          * long-pressed while the display is off
 @@ -1896,6 +1914,8 @@ public final class CMSettings {
                  CMSettings.System.CAMERA_LAUNCH,
                  CMSettings.System.STYLUS_ICON_ENABLED,

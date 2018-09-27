@@ -13,43 +13,6 @@ Change-Id: I2a941cde18470686a955f48bf116235c422e2c40
  5 files changed, 54 insertions(+), 11 deletions(-)
  create mode 100644 res/values/crdroid_colors.xml
 
-diff --git a/res/layout-land/dialpad_fragment.xml b/res/layout-land/dialpad_fragment.xml
-index 0639899..0371396 100644
---- a/res/layout-land/dialpad_fragment.xml
-+++ b/res/layout-land/dialpad_fragment.xml
-@@ -29,7 +29,7 @@
-             android:layout_width="0dp"
-             android:layout_height="match_parent"
-             android:layout_weight="4"
--            android:background="#00000000" />
-+            android:background="@color/background_color_transparent" />
- 
-         <!-- Dialpad shadow -->
-         <View
-diff --git a/res/layout/dialpad_fragment.xml b/res/layout/dialpad_fragment.xml
-index 5748f5d..4440e90 100644
---- a/res/layout/dialpad_fragment.xml
-+++ b/res/layout/dialpad_fragment.xml
-@@ -30,7 +30,7 @@
-             android:layout_width="match_parent"
-             android:layout_height="0dp"
-             android:layout_weight="1"
--            android:background="#00000000" />
-+            android:background="@color/background_color_transparent" />
-         <!-- Dialpad shadow -->
-         <View
-             android:layout_width="match_parent"
-diff --git a/res/layout/keyguard_preview.xml b/res/layout/keyguard_preview.xml
-index 16243eb..3f6cd72 100644
---- a/res/layout/keyguard_preview.xml
-+++ b/res/layout/keyguard_preview.xml
-@@ -26,5 +26,5 @@
-         android:layout_width="match_parent"
-         android:layout_weight="1"
-         android:layout_height="0dp"
--        android:background="#ffffff" />
-+        android:background="@color/keyguard_preview_bg" />
- </LinearLayout>
 diff --git a/res/values/crdroid_colors.xml b/res/values/crdroid_colors.xml
 new file mode 100644
 index 0000000..8c59bcf
@@ -124,32 +87,6 @@ index 6753aed..fce669b 100644
              <!-- Favorites -->
          <item name="favorites_padding_bottom">?android:attr/actionBarSize</item>
          <item name="android:colorPrimary">@color/dialer_theme_color</item>
-@@ -92,7 +102,7 @@
-     </style>
- 
-     <style name="DialerButtonTextStyle" parent="@android:style/TextAppearance.Material.Widget.Button">
--        <item name="android:textColor">#fff</item>
-+        <item name="android:textColor">@color/dialer_button_text_color</item>
-     </style>
- 
-     <!-- Action bar overflow menu icon. -->
-@@ -108,7 +118,7 @@
-     </style>
- 
-     <style name="DialpadTheme" parent="DialtactsTheme">
--        <item name="android:textColorPrimary">#FFFFFF</item>
-+        <item name="android:textColorPrimary">@color/dialpad_text_color</item>
-     </style>
- 
-     <style name="DialtactsThemeWithoutActionBarOverlay" parent="DialtactsTheme">
-@@ -253,6 +263,7 @@
-         <!-- Setting description. -->
-         <item name="android:textColorSecondary">@color/settings_text_color_secondary</item>
-         <item name="android:windowBackground">@color/setting_background_color</item>
-+        <item name="android:colorControlActivated">@color/dialer_theme_color</item>
-         <item name="android:colorAccent">@color/dialtacts_theme_color</item>
-         <item name="android:textColorLink">@color/dialtacts_theme_color</item>
-     </style>
 -- 
 1.9.3 (Apple Git-50)
 

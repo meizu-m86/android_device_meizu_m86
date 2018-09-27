@@ -19,7 +19,7 @@ deleted file mode 100644
 index 7e36c5e..0000000
 --- a/camera/cameraserver/Android.mk
 +++ /dev/null
-@@ -1,36 +0,0 @@
+@@ -1,40 +0,0 @@
 -# Copyright 2015 The Android Open Source Project
 -#
 -# Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,6 +36,9 @@ index 7e36c5e..0000000
 -
 -LOCAL_PATH:= $(call my-dir)
 -
+-ifeq ($(TARGET_HAS_LEGACY_CAMERA_HAL1),true)
+-$(warning Target has integrated cameraserver into mediaserver. This is weakening security measures introduced in 7.0)
+-else
 -include $(CLEAR_VARS)
 -
 -LOCAL_SRC_FILES:= \
@@ -56,6 +59,7 @@ index 7e36c5e..0000000
 -LOCAL_INIT_RC := cameraserver.rc
 -
 -include $(BUILD_EXECUTABLE)
+-endif
 diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
 deleted file mode 100644
 index fea5a1d..0000000
@@ -113,19 +117,23 @@ diff --git a/media/mediaserver/main_mediaserver.cpp b/media/mediaserver/main_med
 index ecddc48..cb96635 100644
 --- a/media/mediaserver/main_mediaserver.cpp
 +++ b/media/mediaserver/main_mediaserver.cpp
-@@ -28,6 +28,7 @@
+@@ -28,9 +28,7 @@
+ #include "RegisterExtensions.h"
+ 
+ // from LOCAL_C_INCLUDES
+-#ifdef NO_CAMERA_SERVER
+ #include "CameraService.h"
+-#endif
  #include "IcuUtils.h"
  #include "MediaPlayerService.h"
  #include "ResourceManagerService.h"
-+#include "CameraService.h"
- 
- using namespace android;
- 
-@@ -41,6 +42,7 @@ int main(int argc __unused, char **argv __unused)
+@@ -41,9 +42,7 @@ int main(int argc __unused, char **argv __unused)
      InitializeIcuOrDie();
      MediaPlayerService::instantiate();
      ResourceManagerService::instantiate();
-+    CameraService::instantiate();
+-#ifdef NO_CAMERA_SERVER
+     CameraService::instantiate();
+-#endif
      registerExtensions();
      ProcessState::self()->startThreadPool();
      IPCThreadState::self()->joinThreadPool();

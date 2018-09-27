@@ -12,12 +12,15 @@ diff --git a/services/camera/libcameraservice/CameraService.cpp b/services/camer
 index e50bff9..602f27e 100644
 --- a/services/camera/libcameraservice/CameraService.cpp
 +++ b/services/camera/libcameraservice/CameraService.cpp
-@@ -831,7 +831,7 @@ String8 CameraService::toString(std::set<userid_t> intSet) {
+@@ -831,11 +831,7 @@ String8 CameraService::toString(std::set<userid_t> intSet) {
  Status CameraService::initializeShimMetadata(int cameraId) {
      int uid = getCallingUid();
  
+-#ifdef NO_CAMERA_SERVER
+     String16 internalPackageName("media");
+-#else
 -    String16 internalPackageName("cameraserver");
-+    String16 internalPackageName("media");
+-#endif
      String8 id = String8::format("%d", cameraId);
      Status ret = Status::ok();
      sp<Client> tmp = nullptr;
