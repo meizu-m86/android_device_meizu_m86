@@ -16,15 +16,23 @@
 
 LOCAL_PATH := device/meizu/m86
 
+TARGET_DEVICE := m86
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/meizu/m86/m86-vendor.mk)
 
+$(call inherit-product-if-exists, device/meizu/m86/AndroidProducts.mk)
+
 $(call inherit-product-if-exists, prebuilts/chromium/chromium_prebuilt.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/meizu/m86/overlay
+
+M86_PATH := device/meizu/m86
+
+PLATFORM_PATH := device/meizu/m86
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -33,6 +41,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 

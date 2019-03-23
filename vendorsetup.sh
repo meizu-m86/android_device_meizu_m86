@@ -1,3 +1,3 @@
-add_lunch_combo lineage_m86-user
-add_lunch_combo lineage_m86-userdebug
-add_lunch_combo lineage_m86-eng
+add_lunch_combo aosp_m86-user
+add_lunch_combo aosp_m86-userdebug
+add_lunch_combo aosp_m86-eng
