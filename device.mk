@@ -228,7 +228,6 @@ PRODUCT_PACKAGES += \
     ueventd.m86.rc
 
 PRODUCT_COPY_FILES += \
-    device/meizu/m86/rootdir/etc/init.rc:root/init.rc \
     device/meizu/m86/rootdir/sbin/cbd:root/sbin/cbd
 
 PRODUCT_PACKAGES += \

@@ -9,7 +9,6 @@ bin/check_OTP.sh
 bin/climax_tfa9890
 bin/dis_effect
 bin/gpsd
-bin/gpsd_org
 bin/gpslogd
 bin/immvibed
 bin/march_hotplug

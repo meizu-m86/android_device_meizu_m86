@@ -21,7 +21,6 @@ git apply -v ../../device/meizu/m86/patches/frameworks/base/000-checking-that-ma
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-adding-reject-alarm-feature-to-alarm-blocker.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-Hifi-Settings-1-3.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-signature-spoof-1-2.patch
-git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-Suspend-Actions-1-3.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-Suspend-Actions-WiFi-Toggle-1-2.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-Swipe-for-Recents-1-2.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/base/0001-WakelockBlocker-fix.patch
@@ -56,7 +55,6 @@ git apply -v ../../../device/meizu/m86/patches/packages/apps/Settings/0001-Suspe
 git apply -v ../../../device/meizu/m86/patches/packages/apps/Settings/0001-Swipe-for-Recents-2-2.patch
 cd ../../..
 cd packages/services/Telephony
-git apply -v ../../../device/meizu/m86/patches/packages/services/Telephony/0001-Suspend-Actions-3-3.patch
 git apply -v ../../../device/meizu/m86/patches/packages/services/Telephony/46280baa5e557b76a262da27b673b0ca222e3998.patch
 cd ../../..
 cd system/core
@@ -67,7 +65,6 @@ git apply -v ../../device/meizu/m86/patches/system/vold/0001-disable-setexeccon-
 git apply -v ../../device/meizu/m86/patches/system/vold/0001-No-SD-encryption.patch
 cd ../..
 cd vendor/cmsdk
-git apply -v ../../device/meizu/m86/patches/vendor/cmsdk/0001-fix-picture-adjust.patch
 git apply -v ../../device/meizu/m86/patches/vendor/cmsdk/0001-Hifi-Settings-2-3.patch
 cd ../..
 echo -e "Patches Applied Successfully!\n"
