@@ -1,8 +1,5 @@
 #!/bin/bash
 cd ../../../..
-cd external/wpa_supplicant_8
-git apply -v ../../device/meizu/m86/patches/external/wpa_supplicant_8/0001-wifi-direct-fix.patch
-cd ../..
 cd frameworks/av
 git apply -v ../../device/meizu/m86/patches/frameworks/av/0001-Add-samsung-WFD.patch
 git apply -v ../../device/meizu/m86/patches/frameworks/av/0001-codecs-load-fix.patch
