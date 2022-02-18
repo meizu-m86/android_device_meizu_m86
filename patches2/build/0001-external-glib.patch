@@ -1,0 +1,25 @@
+From 751d9525ceb773ba66b2822b98b852c91541eff1 Mon Sep 17 00:00:00 2001
+From: kuailexs <952415538@qq.com>
+Date: Fri, 18 Feb 2022 12:49:17 +0800
+Subject: [PATCH] external/glib
+
+Change-Id: I9f4040ed42f87d4d54dffd92211bc639b267de6d
+---
+ core/main.mk | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/core/main.mk b/core/main.mk
+index 3c9efbc..7346a4a 100644
+--- a/core/main.mk
++++ b/core/main.mk
+@@ -583,6 +583,7 @@ subdirs := \
+ 	external/squashfs-tools \
+ 	external/zopfli \
+ 	external/vulkan-validation-layers \
++	external/glib \
+ 	frameworks/av/camera \
+ 	frameworks/av/drm \
+ 	frameworks/av/media/common_time \
+-- 
+2.7.4
+

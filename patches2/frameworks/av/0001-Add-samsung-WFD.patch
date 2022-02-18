@@ -224,9 +224,9 @@ diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
 index df4e4b6..fccdb73 100644
 --- a/media/libmedia/Android.mk
 +++ b/media/libmedia/Android.mk
-@@ -75,6 +75,13 @@ LOCAL_SRC_FILES:= \
-     StringArray.cpp \
-     AudioPolicy.cpp
+@@ -78,6 +78,13 @@ LOCAL_SRC_FILES:= \
+     record_track.cpp \
+     camera_record_service.cpp
  
 +ifeq ($(BOARD_USES_WFD_SERVICE),true)
 +LOCAL_SRC_FILES += \
