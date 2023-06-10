@@ -1,0 +1,9 @@
+start on starting upstart-file-bridge 
+stop on runlevel [06]
+
+pre-start script
+        mkdir -p /dev/socket
+end script
+
+respawn
+exec /sbin/getty -8 115200 ttyFIQ2

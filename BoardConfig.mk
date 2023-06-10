@@ -83,7 +83,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=m86
+BOARD_KERNEL_CMDLINE := androidboot.hardware=m86 console=tty0 selinux=0 apparmor=0
 BOARD_KERNEL_PAGESIZE := 4096
 #BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE) --ramdisk_offset 0x01f88000 --tags_offset 0xfff88100 --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE) --ramdisk_offset 0x01f88000 --pagesize $(BOARD_KERNEL_PAGESIZE)

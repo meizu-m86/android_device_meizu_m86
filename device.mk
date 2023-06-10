@@ -97,6 +97,26 @@ PRODUCT_PACKAGES += \
     libshim_media
 #    libgps_shim
 
+### Ubuntu Touch ###
+
+# droidmedia
+PRODUCT_PACKAGES += \
+    libdroidmedia \
+    minimediaservice \
+    minisfservice \
+    minimediaservice
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/70-android.rules:$(TARGET_COPY_OUT_SYSTEM)/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/ubuntu/android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/bluetooth-touch-android.conf \
+    $(LOCAL_PATH)/ubuntu/ofono.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/ubuntu/ubuntu-location-service.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ubuntu-location-service.override \
+    $(LOCAL_PATH)/ubuntu/networking.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/networking.conf \
+    $(LOCAL_PATH)/ubuntu/tty1.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/tty1.override \
+    $(LOCAL_PATH)/ubuntu/config-default.xml:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/share/powerd/device_configs/config-default.xml \
+
+### End Ubuntu Touch ###
 
 # Bluetooth
 PRODUCT_COPY_FILES += \

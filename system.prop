@@ -46,3 +46,6 @@ debug.hwc.force_gpu=0
 #debug.hwui.render_dirty_regions=true
 ro.hwui.disable_asset_atlas=true
 persist.sys.memopt.switch=1
+
+ro.product.device=m86
+
