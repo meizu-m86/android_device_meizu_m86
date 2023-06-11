@@ -9,8 +9,6 @@
 /dev/block/platform/15570000.ufs/by-name/efs            /efs    ext4    rw     wait,check
 /dev/block/platform/15570000.ufs/by-name/mnv            /mnv    ext4    ro,noload     wait
 /dev/block/platform/15570000.ufs/by-name/custom         /custom     ext4    ro,noload,errors=panic  wait
-/dev/block/platform/15570000.ufs/by-name/recovery	/recovery	emmc	defaults	recoveryonly
-/dev/block/platform/15570000.ufs/by-name/bootimg	/boot	emmc	defaults	recoveryonly
 
 # VOLD
 /devices/15560000.dwmmc2/mmc_host/mmc0*		auto		auto	nosuid,nodev voldmanaged=sdcard1:auto,encryptable=userdata,noemulatedsd
