@@ -109,9 +109,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-android.rules:$(TARGET_COPY_OUT_SYSTEM)/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/touch.pa:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/pulse/touch.pa \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/bluetooth-touch-android.conf \
+    $(LOCAL_PATH)/ubuntu/ofono.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ofono.override \
 
-#    $(LOCAL_PATH)/ubuntu/bluetooth-touch-android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/bluetooth-touch-android.conf \
-#    $(LOCAL_PATH)/ubuntu/ofono.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ofono.override \
 #    $(LOCAL_PATH)/ubuntu/ubuntu-location-service.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ubuntu-location-service.override \
 #    $(LOCAL_PATH)/ubuntu/networking.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/networking.conf \
 #    $(LOCAL_PATH)/ubuntu/tty1.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/tty1.override \
